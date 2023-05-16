@@ -23,12 +23,10 @@ const FeaturedProducts = () => {
     page: 1,
   });
 
-  console.log("pagination products", featuredProductsPagination);
-
   useEffect(() => {
     async function fetchFeaturedProductsPagination() {
       try {
-        //Doan nay su dung thu vien query-string de bien obj filters thanh chuoi string limit=10&page=1
+        //Doan nay su dung thu vien query-string de bien doi obj filters thanh chuoi string limit=8&page=1
         const paramsString = queryString.stringify(filters);
         const requestUrl = `http://localhost:1000/featured-products?${paramsString}`;
         const response = await fetch(requestUrl);
@@ -45,13 +43,9 @@ const FeaturedProducts = () => {
   }, [filters]);
 
   const featuredProductsLength = featuredProductsPagination.length;
-  console.log(featuredProductsLength);
 
-  const {
-    products_loading: loading,
-    products_error: error,
-    products: product,
-  } = useProductsContext();
+  const { products_loading: loading, products_error: error } =
+    useProductsContext();
 
   if (loading) {
     return <Loading />;
@@ -59,8 +53,6 @@ const FeaturedProducts = () => {
   if (error) {
     return <Error />;
   }
-
-  // console.log(product);
 
   const handlePageChange = (newPage) => {
     console.log("newPage: ", newPage);
@@ -77,9 +69,6 @@ const FeaturedProducts = () => {
       </div>
 
       <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {/* {product.map((item) => (
-          <Products key={item._id} {...item} />
-        ))} */}
         {featuredProductsPagination.map((item) => (
           <Products key={item._id} {...item} />
         ))}

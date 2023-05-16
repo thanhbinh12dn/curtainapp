@@ -1,12 +1,12 @@
 const FeaturedProduct = require("../models/FeaturedProduct");
 
 class FeaturedProductController {
-  //[GET] /featured-products
+  //[GET] /
   index(req, res, next) {
     let limit = req.query.limit;
     let page = req.query.page;
     if (page) {
-      //get page
+      //get page ?limit=limit&page=page
       limit = parseInt(limit);
       page = parseInt(page);
 
@@ -26,7 +26,7 @@ class FeaturedProductController {
         })
         .catch(next);
     } else {
-      //Get all
+      //Get all /
       res.header("Access-Control-Allow-Origin", "*");
       res.header("Access-Control-Allow-Headers", "X-Requested-With");
       FeaturedProduct.find({})

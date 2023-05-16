@@ -1,7 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useProductsContext } from "../contexts/products_context";
+import { products_detail_url as url } from "../url/products_detail_url";
 
-const ProductDetail = () => {
+const ProductDetail = ({ slug }) => {
+  let { id } = useParams();
+  const { products_detail, fetchProductsDetail } = useProductsContext();
+
+  const { _id, description, imgURL } = products_detail;
+
+  useEffect(() => {
+    fetchProductsDetail(`${url}${id}`);
+  }, [id]);
+
   return (
     <main className="pt-[128px] px-20">
       <Link className="inline-block px-2 py-0 bg-red-200 rounded-lg" to={"/"}>
@@ -9,15 +22,10 @@ const ProductDetail = () => {
       </Link>
       <div className="mt-4 grid md:grid-cols-2">
         <div className="flex justify-center">
-          <img
-            src="https://product.hstatic.net/1000288513/product/img_3582_34866fade5594fd69ad5b1425fffedd3_large.jpg"
-            alt=""
-          />
+          <img src={imgURL} alt="" />
         </div>
         <div>
-          <h3 className="font-semibold text-2xl mb-3">
-            HPSL-19-01 Rèm vải gấm Solid chống nắng hoa van chìm
-          </h3>
+          <h3 className="font-semibold text-2xl mb-3">{description}</h3>
           <h5 className="font-semibold text-lg text-[#ab7a5f] mb-3">
             170.000 VND
           </h5>

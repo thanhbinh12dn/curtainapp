@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 
 const Pagination = (props) => {
   const { pagination, onPageChange, featuredProductsLength } = props;
@@ -30,6 +29,7 @@ const Pagination = (props) => {
       </button>
       {numbers.map((number, index) => (
         <button
+          key={index}
           className={`active: ${
             page === number ? "bg-[#ab7a5f]" : ""
           } border border-solid border-slate-300 p-2 active:text-white`}
@@ -42,7 +42,6 @@ const Pagination = (props) => {
       ))}
       <button
         className="ml-2 border border-solid border-slate-300 p-2"
-        // disabled={page >= totalPages}
         disabled={page >= featuredProductsLength}
         onClick={() => handlePageChange(page + 1)}
       >
