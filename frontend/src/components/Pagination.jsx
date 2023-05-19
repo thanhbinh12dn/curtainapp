@@ -4,11 +4,7 @@ const Pagination = (props) => {
   const { pagination, onPageChange, featuredProductsLength } = props;
   const { page, limit } = pagination;
   const totalPages = Math.ceil(featuredProductsLength / limit);
-  const numbers = [...Array(totalPages + 2).keys()].slice(1);
-
-  console.log(page);
-  console.log(featuredProductsLength);
-  console.log(totalPages);
+  const numbers = [...Array(totalPages + 1).keys()].slice(1);
 
   const handlePageChange = (newPage) => {
     if (onPageChange) {

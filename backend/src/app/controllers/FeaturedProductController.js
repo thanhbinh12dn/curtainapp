@@ -37,6 +37,19 @@ class FeaturedProductController {
       // res.render("featured-products");
     }
   }
+
+  //[POST] /featured-products/store
+  store(req, res, next) {
+    const featuredProduct = new FeaturedProduct(req.body);
+    featuredProduct
+      .save()
+      .then(() =>
+        res
+          .status(200)
+          .json({ featuredProduct: "featuredProduct in added successfully" })
+      )
+      .catch((error) => {});
+  }
 }
 
 module.exports = new FeaturedProductController();

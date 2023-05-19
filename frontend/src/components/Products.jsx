@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ProductDetail from "./ProductDetail";
 
 const Products = ({ description, imgURL, slug }) => {
   return (

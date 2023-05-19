@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 import { products_detail_url as url } from "../url/products_detail_url";
 
-const ProductDetail = ({ slug }) => {
-  let { id } = useParams();
+const ProductDetail = () => {
+  const { id } = useParams();
+
   const { products_detail, fetchProductsDetail } = useProductsContext();
 
-  const { _id, description, imgURL } = products_detail;
+  const { description, imgURL } = products_detail;
 
   useEffect(() => {
     fetchProductsDetail(`${url}${id}`);

@@ -42,10 +42,13 @@ const FeaturedProducts = () => {
     fetchFeaturedProductsPagination();
   }, [filters]);
 
-  const featuredProductsLength = featuredProductsPagination.length;
+  const {
+    products_loading: loading,
+    products_error: error,
+    products,
+  } = useProductsContext();
 
-  const { products_loading: loading, products_error: error } =
-    useProductsContext();
+  const featuredProductsLength = products.length;
 
   if (loading) {
     return <Loading />;

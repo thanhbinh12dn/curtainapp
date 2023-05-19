@@ -1,23 +1,39 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from "./components/Header";
-import MainContainer from "./components/MainContainer";
-import Admin from "./components/Admin";
-import ProductDetail from "./components/ProductDetail";
-import ProductsPage from "./pages/ProductsPage";
+import { publicRoutes } from "./routes";
 
 const App = () => {
   return (
-    <div className="">
-      <Header />
-      <Routes>
-        <Route path="/admin" element={<Admin />}></Route>
-        <Route path="/products" element={<ProductsPage />}></Route>
-        <Route path="/product-detail/:id" element={<ProductDetail />}></Route>
-        <Route path="/" element={<MainContainer />}></Route>
-      </Routes>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          {publicRoutes.map((route, index) => {
+            const Page = route.component;
+
+            let Layout;
+
+            if (route.layout) {
+              Layout = route.layout;
+            } else if (route.layout === null) {
+              Layout = Fragment;
+            }
+
+            return (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </div>
+    </Router>
   );
 };
 

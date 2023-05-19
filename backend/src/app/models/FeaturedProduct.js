@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const FeaturedProduct = new Schema(
   {
+    name: { type: String },
     description: { type: String },
     imgURL: { type: String },
   },
