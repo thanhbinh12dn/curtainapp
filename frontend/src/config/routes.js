@@ -4,6 +4,7 @@ const routes = {
   products: "/products",
   admin: "/admin",
   login: "/login",
+  stored: "/stored/featured-products",
 };
 
 export default routes;

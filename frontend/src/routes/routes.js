@@ -9,6 +9,7 @@ import ProductDetail from "../components/ProductDetail";
 import ProductsPage from "../pages/ProductsPage";
 import Login from "../components/Login";
 import Admin from "../components/Admin";
+import StoredFeaturedProducts from "../components/StoredFeaturedProducts";
 
 // Public routes
 const publicRoutes = [
@@ -21,6 +22,11 @@ const publicRoutes = [
   { path: config.routes.products, component: ProductsPage, layout: HeaderOnly },
   { path: config.routes.admin, component: Admin, layout: null },
   { path: config.routes.login, component: Login, layout: null },
+  {
+    path: config.routes.stored,
+    component: StoredFeaturedProducts,
+    layout: null,
+  },
 ];
 
 export { publicRoutes };
