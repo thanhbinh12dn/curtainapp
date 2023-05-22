@@ -10,6 +10,7 @@ import ProductsPage from "../pages/ProductsPage";
 import Login from "../components/Login";
 import Admin from "../components/Admin";
 import StoredFeaturedProducts from "../components/StoredFeaturedProducts";
+import EditFeaturedProduct from "../components/EditFeaturedProduct";
 
 // Public routes
 const publicRoutes = [
@@ -25,6 +26,11 @@ const publicRoutes = [
   {
     path: config.routes.stored,
     component: StoredFeaturedProducts,
+    layout: null,
+  },
+  {
+    path: config.routes.edit,
+    component: EditFeaturedProduct,
     layout: null,
   },
 ];

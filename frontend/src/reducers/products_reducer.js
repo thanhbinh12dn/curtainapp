@@ -5,6 +5,7 @@ import {
   GET_PRODUCTS_DETAIL_BEGIN,
   GET_PRODUCTS_DETAIL_SUCCESS,
   GET_PRODUCTS_DETAIL_ERROR,
+  GET_STORED_FEATURED_PRODUCTS,
 } from "../actions";
 
 const products_reducer = (state, action) => {
@@ -47,6 +48,12 @@ const products_reducer = (state, action) => {
       ...state,
       products_detail_loading: false,
       products_detail_error: true,
+    };
+  }
+  if (action.type === GET_STORED_FEATURED_PRODUCTS) {
+    return {
+      ...state,
+      stored_featured_products: action.payload,
     };
   }
   throw new Error(`No Matching "${action.type}" - action type`);

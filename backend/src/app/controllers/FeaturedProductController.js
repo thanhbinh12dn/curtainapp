@@ -48,7 +48,26 @@ class FeaturedProductController {
           .status(200)
           .json({ featuredProduct: "featuredProduct in added successfully" })
       )
-      .catch((error) => {});
+      .catch(next);
+  }
+
+  //[GET] /featured-products/:id
+  edit(req, res, next) {
+    FeaturedProduct.findById(req.params.id)
+      .then((featuredProductOne) => res.json(featuredProductOne))
+      .catch(next);
+  }
+
+  //[PUT] /featured-products/:id
+  update(req, res, next) {
+    FeaturedProduct.updateOne({ _id: req.params.id }, req.body)
+      .then(() =>
+        res
+          .status(200)
+          .json({ featuredProduct: "featuredProduct in update successfully" })
+      )
+      .catch(next);
+    //redirect giúp điều hướng tới trang theo url đó
   }
 }
 

@@ -17,12 +17,12 @@ const ProductDetail = () => {
   }, [id]);
 
   return (
-    <main className="pt-[128px] px-20">
+    <main className="pt-[128px] md:px-20 px-8">
       <Link className="inline-block px-2 py-0 bg-red-200 rounded-lg" to={"/"}>
         Quay lại
       </Link>
       <div className="mt-4 grid md:grid-cols-2">
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-5 md:mb-0">
           <img src={imgURL} alt="" />
         </div>
         <div>
