@@ -67,7 +67,17 @@ class FeaturedProductController {
           .json({ featuredProduct: "featuredProduct in update successfully" })
       )
       .catch(next);
-    //redirect giúp điều hướng tới trang theo url đó
+  }
+
+  //[DELETE] /featured-products/:id
+  destroy(req, res, next) {
+    FeaturedProduct.findByIdAndRemove({ _id: req.params.id })
+      .then(() =>
+        res
+          .status(200)
+          .json({ featuredProduct: "featuredProduct in delete successfully" })
+      )
+      .catch(next);
   }
 }
 

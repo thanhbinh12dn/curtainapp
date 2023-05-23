@@ -6,6 +6,7 @@ const featuredProductController = require("../app/controllers/FeaturedProductCon
 router.post("/store", featuredProductController.store);
 router.get("/:id/edit", featuredProductController.edit);
 router.put("/:id", featuredProductController.update);
+router.delete("/:id", featuredProductController.destroy);
 router.get("/", featuredProductController.index);
 
 module.exports = router;

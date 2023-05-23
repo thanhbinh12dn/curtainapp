@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
 import { products_url as url } from "../url/products_url";
@@ -48,6 +48,10 @@ const EditFeaturedProduct = () => {
 
   return (
     <div className="px-28 pt-16">
+      <Link to={"/stored/featured-products"}>
+        <i class="fa-solid fa-angle-left"></i>
+        <span className="ml-1">Quay lại</span>
+      </Link>
       <h1 className="text-2xl font-semibold mb-3">Cập nhật sản phẩm nổi bật</h1>
       <form onSubmit={handleEditFeaturedProduct}>
         <div className="mb-4">
