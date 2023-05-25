@@ -11,6 +11,7 @@ import Login from "../components/Login";
 import Admin from "../components/Admin";
 import StoredFeaturedProducts from "../components/StoredFeaturedProducts";
 import EditFeaturedProduct from "../components/EditFeaturedProduct";
+import CartContent from "../components/CartContent";
 
 // Public routes
 const publicRoutes = [
@@ -33,6 +34,7 @@ const publicRoutes = [
     component: EditFeaturedProduct,
     layout: null,
   },
+  { path: config.routes.cart, component: CartContent, layout: HeaderOnly },
 ];
 
 export { publicRoutes };

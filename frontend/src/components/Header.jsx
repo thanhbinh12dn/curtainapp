@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import LOGO from "../img/logo.png";
+import LOGO from "../img/logo2.png";
 import { IoMenu } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 
@@ -12,21 +12,17 @@ const Header = () => {
     <header className="fixed left-0 top-0 right-0 bg-white z-10">
       {/* pc and tablet */}
       <div className="hidden lg:flex items-center justify-between px-20">
-        <ul className="flex items-center uppercase font-semibold -mt-4">
+        <div className="w-24">
+          <Link to="/">
+            <img className="w-full" src={LOGO} alt="logo" />
+          </Link>
+        </div>
+        <ul className="flex items-center uppercase font-semibold">
           <li className="p-4 hover:bg-slate-50 cursor-pointer">Rèm gia đình</li>
           <li className="p-4 hover:bg-slate-50 cursor-pointer">
             Rèm văn phòng
           </li>
           <li className="p-4 hover:bg-slate-50 cursor-pointer">Rèm tự động</li>
-        </ul>
-
-        <div className="w-32">
-          <Link to="/">
-            <img className="w-full" src={LOGO} alt="logo" />
-          </Link>
-        </div>
-
-        <ul className="flex items-center uppercase font-semibold -mt-4">
           <li className="p-4 hover:bg-slate-50 cursor-pointer">
             Rèm chuyên dụng
           </li>
@@ -35,10 +31,19 @@ const Header = () => {
             Sản phẩm khác
           </li>
         </ul>
+
+        <Link className="px-1" to={"/cart"}>
+          <span className="text-xl relative">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span className="absolute -top-3 left-3.5 text-white rounded-full py-1 px-2 text-xs bg-red-200">
+              0
+            </span>
+          </span>
+        </Link>
       </div>
 
       {/* mobile */}
-      <div className="lg:hidden flex items-center justify-center px-50">
+      <div className="lg:hidden flex items-center justify-center px-20">
         {menuBar && (
           <IoMenu
             onClick={() => setMenuBar(false)}
@@ -50,6 +55,15 @@ const Header = () => {
             <img className="w-full" src={LOGO} alt="logo" />
           </Link>
         </div>
+
+        <Link className="px-1 fixed right-6" to={"/cart"}>
+          <span className="text-xl relative">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span className="absolute -top-3 left-3.5 text-white rounded-full py-1 px-2 text-xs bg-red-200">
+              0
+            </span>
+          </span>
+        </Link>
 
         {!menuBar && (
           <div className="lg:hidden fixed top-0 left-0 right-28 md:right-96 bottom-0 bg-black z-10">

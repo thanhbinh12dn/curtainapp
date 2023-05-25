@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 import ProductsProvider from "./contexts/products_context";
+import CartProvider from "./contexts/cart_context";
 
 import "./index.css";
 
@@ -11,6 +12,8 @@ const root = createRoot(document.getElementById("root"));
 
 root.render(
   <ProductsProvider>
-    <App />
+    <CartProvider>
+      <App />
+    </CartProvider>
   </ProductsProvider>
 );

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useProductsContext } from "../contexts/products_context";
 import { products_detail_url as url } from "../url/products_detail_url";
+import AddToCart from "./AddToCart";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -73,6 +74,10 @@ const ProductDetail = () => {
               <option value="4">250 x 270cm</option>
               <option value="5">300 x 270cm</option>
             </select>
+          </div>
+
+          <div className="mt-3">
+            <AddToCart product={products_detail} />
           </div>
         </div>
       </div>

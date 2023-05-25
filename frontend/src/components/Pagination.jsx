@@ -38,7 +38,7 @@ const Pagination = (props) => {
       ))}
       <button
         className="ml-2 border border-solid border-slate-300 p-2"
-        disabled={page >= featuredProductsLength}
+        disabled={page >= totalPages}
         onClick={() => handlePageChange(page + 1)}
       >
         Trang sau

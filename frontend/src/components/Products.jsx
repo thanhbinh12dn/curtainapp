@@ -13,10 +13,11 @@ const Products = ({ description, imgURL, slug }) => {
         </div>
       </div>
       <div className="px-2">
-        <Link to={`/product-detail/${slug}`}>
-          <button className="p-2 bg-black w-full text-white rounded-lg">
-            Xem chi tiết
-          </button>
+        <Link
+          to={`/product-detail/${slug}`}
+          className="block text-center p-2 bg-black w-full text-white rounded-xl"
+        >
+          Xem chi tiết
         </Link>
       </div>
     </div>
