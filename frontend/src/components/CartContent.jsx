@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { formatPrice } from "../utils/helpers";
 import { useCartContext } from "../contexts/cart_context";
 import CartItem from "./CartItem";
 
 const CartContent = () => {
-  const { cart } = useCartContext();
+  const { cart, total_amount } = useCartContext();
 
   return (
     <div className="pt-24 px-8 md:px-24">
@@ -17,13 +19,13 @@ const CartContent = () => {
         <h5></h5>
       </div>
 
-      {cart.map((item) => {
-        return <CartItem key={item.id} {...item} />;
+      {cart.map((item, index) => {
+        return <CartItem key={index} {...item} />;
       })}
 
       <div className="float-right flex mt-5">
         <h5 className="mr-5">Tổng tất cả sản phẩm:</h5>
-        <h5 className="text-[#f7923d]">170,000₫</h5>
+        <h5 className="text-[#f7923d]">{formatPrice(total_amount)}</h5>
       </div>
 
       <div className="mt-14 flex justify-between">

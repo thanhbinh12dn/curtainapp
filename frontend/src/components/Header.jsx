@@ -5,8 +5,11 @@ import LOGO from "../img/logo2.png";
 import { IoMenu } from "react-icons/io5";
 import { MdClose } from "react-icons/md";
 
+import { useCartContext } from "../contexts/cart_context";
+
 const Header = () => {
   const [menuBar, setMenuBar] = useState(true);
+  const { total_items } = useCartContext();
 
   return (
     <header className="fixed left-0 top-0 right-0 bg-white z-10">
@@ -36,7 +39,7 @@ const Header = () => {
           <span className="text-xl relative">
             <i class="fa-solid fa-cart-shopping"></i>
             <span className="absolute -top-3 left-3.5 text-white rounded-full py-1 px-2 text-xs bg-red-200">
-              0
+              {total_items}
             </span>
           </span>
         </Link>
