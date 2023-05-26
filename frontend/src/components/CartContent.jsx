@@ -6,11 +6,10 @@ import { useCartContext } from "../contexts/cart_context";
 import CartItem from "./CartItem";
 
 const CartContent = () => {
-  const { cart, total_amount } = useCartContext();
+  const { cart, total_amount, clearCart } = useCartContext();
 
   return (
-    <div className="pt-24 px-8 md:px-24">
-      <h1 className="font-semibold text-2xl mb-5">Giỏ hàng</h1>
+    <div>
       <div className="hidden md:block md:grid md:grid-cols-[360px_1fr_1fr_1fr_auto] justify-items-center pb-2 border-b-2 font-semibold">
         <h5>Sản phẩm</h5>
         <h5>Giá tiền</h5>
@@ -32,7 +31,10 @@ const CartContent = () => {
         <Link className="rounded-md text-white px-2 py-1 bg-[#B3C890]" to={"/"}>
           Tiếp tục xem
         </Link>
-        <button className="rounded-md text-white px-2 py-0.5 bg-[#B3C890]">
+        <button
+          className="rounded-md text-white px-2 py-0.5 bg-[#B3C890]"
+          onClick={() => clearCart()}
+        >
           Xóa giỏ hàng
         </button>
       </div>

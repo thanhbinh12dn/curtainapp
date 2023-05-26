@@ -4,6 +4,8 @@ import {
   ADD_TO_CART,
   CHANGE_AMOUNT_CART_ITEM,
   COUNT_CART_TOTALS,
+  REMOVE_CART_ITEM,
+  CLEAR_CART,
 } from "../actions";
 
 const getLocalStorage = () => {
@@ -34,13 +36,23 @@ function CartProvider({ children }) {
     dispatch({ type: CHANGE_AMOUNT_CART_ITEM, payload: { id, value } });
   };
 
+  const removeCartItem = (id) => {
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
+  };
+
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cart));
     dispatch({ type: COUNT_CART_TOTALS });
   }, [state.cart]);
 
   return (
-    <CartContext.Provider value={{ ...state, addToCart, changeAmount }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, changeAmount, removeCartItem, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -63,7 +63,7 @@ const Header = () => {
           <span className="text-xl relative">
             <i class="fa-solid fa-cart-shopping"></i>
             <span className="absolute -top-3 left-3.5 text-white rounded-full py-1 px-2 text-xs bg-red-200">
-              0
+              {total_items}
             </span>
           </span>
         </Link>

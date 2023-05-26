@@ -5,8 +5,7 @@ import { useCartContext } from "../contexts/cart_context";
 import AmountButtons from "./AmountButtons";
 
 const CartItem = ({ id, name, amount, image, price }) => {
-  console.log(id);
-  const { changeAmount } = useCartContext();
+  const { changeAmount, removeCartItem } = useCartContext();
 
   const increase = () => {
     changeAmount(id, "inc");
@@ -34,7 +33,10 @@ const CartItem = ({ id, name, amount, image, price }) => {
         />
       </div>
       <h5 className="hidden md:block">{formatPrice(price * amount)}</h5>
-      <button className="px-2 py-1 bg-[#dc3545] rounded-sm text-xs text-white">
+      <button
+        className="px-2 py-1 bg-[#dc3545] rounded-sm text-xs text-white"
+        onClick={() => removeCartItem(id)}
+      >
         <i class="fa-solid fa-trash"></i>
       </button>
     </div>
